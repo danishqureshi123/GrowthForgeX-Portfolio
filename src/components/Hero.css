@@ -1,0 +1,379 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 110px 24px 90px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+/* ── Gradient Orbs ── */
+.hero__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.hero__orb--blue {
+  width: 600px;
+  height: 600px;
+  top: -100px;
+  left: -150px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.10) 0%, transparent 70%);
+}
+
+.hero__orb--purple {
+  width: 500px;
+  height: 500px;
+  bottom: -50px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+}
+
+/* ── Dot Grid ── */
+.hero__bg-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, #e2e8f0 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.5;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 40%, transparent 100%);
+}
+
+/* ── Inner layout ── */
+.hero__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Content ── */
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-light);
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  padding: 7px 16px;
+  border-radius: 99px;
+  width: fit-content;
+  letter-spacing: -0.01em;
+}
+
+.hero__badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; box-shadow: 0 0 8px #22c55e; }
+  50% { opacity: 0.6; box-shadow: 0 0 4px #22c55e; }
+}
+
+.hero__heading {
+  font-size: clamp(2.4rem, 4.8vw, 3.75rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: var(--text);
+}
+
+.hero__heading-accent {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero__sub {
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text-2);
+  max-width: 500px;
+  letter-spacing: -0.01em;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ── Stats ── */
+.hero__stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding-top: 4px;
+}
+
+.hero__stat-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.hero__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0 24px;
+}
+
+.hero__stat:first-child {
+  padding-left: 0;
+}
+
+.hero__stat-num {
+  font-size: 1.625rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  background: linear-gradient(135deg, var(--text), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero__stat-label {
+  font-size: 0.75rem;
+  color: var(--text-3);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.hero__stat-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+/* ── Visual ── */
+.hero__visual {
+  position: relative;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hub circle */
+.hero__hub {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.hero__hub-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px dashed;
+  pointer-events: none;
+}
+
+.hero__hub-ring--1 {
+  width: 200px;
+  height: 200px;
+  border-color: rgba(37, 99, 235, 0.2);
+  animation: spin-cw 18s linear infinite;
+}
+
+.hero__hub-ring--2 {
+  width: 310px;
+  height: 310px;
+  border-color: rgba(124, 58, 237, 0.12);
+  animation: spin-ccw 28s linear infinite;
+}
+
+@keyframes spin-cw {
+  to { transform: rotate(360deg); }
+}
+@keyframes spin-ccw {
+  to { transform: rotate(-360deg); }
+}
+
+.hero__hub-inner {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--purple));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  box-shadow: 0 12px 40px rgba(37, 99, 235, 0.3), 0 0 0 8px rgba(37, 99, 235, 0.08);
+  position: relative;
+  z-index: 3;
+}
+
+.hero__hub-logo {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.hero__hub-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ── Service chips ── */
+.hero__chip {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid var(--border);
+  padding: 9px 15px;
+  border-radius: 99px;
+  white-space: nowrap;
+  box-shadow: var(--shadow-md);
+  z-index: 2;
+}
+
+.hero__chip-icon {
+  color: var(--accent);
+  font-size: 0.875rem;
+}
+
+/* Position each chip */
+.hero__chip--0 { top: 22px;  left: 10px;  animation: float 4.5s ease-in-out infinite 0s; }
+.hero__chip--1 { top: 10px;  right: 20px; animation: float 4.5s ease-in-out infinite 0.5s; }
+.hero__chip--2 { top: 50%;   left: -10px; transform: translateY(-50%); animation: float 4.5s ease-in-out infinite 1s; }
+.hero__chip--3 { top: 50%;   right: -5px; transform: translateY(-50%); animation: float 4.5s ease-in-out infinite 1.5s; }
+.hero__chip--4 { bottom: 30px; left: 20px; animation: float 4.5s ease-in-out infinite 2s; }
+.hero__chip--5 { bottom: 15px; right: 15px; animation: float 4.5s ease-in-out infinite 2.5s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+/* For chips that also have translateY already */
+.hero__chip--2 {
+  animation: float-mid 4.5s ease-in-out infinite 1s;
+}
+.hero__chip--3 {
+  animation: float-mid 4.5s ease-in-out infinite 1.5s;
+}
+
+@keyframes float-mid {
+  0%, 100% { transform: translateY(-50%) translateY(0px); }
+  50% { transform: translateY(-50%) translateY(-8px); }
+}
+
+/* Connector dots */
+.hero__connector {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.35;
+  z-index: 1;
+}
+.hero__connector--1 { top: 30%; left: 28%; animation: pulse-dot 2.5s infinite; }
+.hero__connector--2 { bottom: 30%; right: 28%; animation: pulse-dot 2.5s infinite 1.2s; }
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 0.35; }
+  50% { transform: scale(2); opacity: 0.15; }
+}
+
+/* ── Scroll hint ── */
+.hero__scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-3);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero__scroll-line {
+  width: 1.5px;
+  height: 32px;
+  background: linear-gradient(to bottom, transparent, var(--border-hover));
+  animation: scroll-line 1.8s ease-in-out infinite;
+}
+
+@keyframes scroll-line {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(0.5); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 56px;
+    text-align: center;
+  }
+  .hero__content {
+    align-items: center;
+  }
+  .hero__sub {
+    max-width: 100%;
+  }
+  .hero__visual {
+    height: 360px;
+  }
+  .hero__stats {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__stats {
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+  .hero__stat-divider { display: none; }
+  .hero__stat { padding: 0 12px; }
+  .hero__visual { height: 300px; }
+  .hero__chip { font-size: 0.72rem; padding: 7px 12px; }
+}

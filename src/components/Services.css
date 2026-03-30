@@ -1,0 +1,199 @@
+.services__header {
+  margin-bottom: 40px;
+}
+
+.services__sub {
+  font-size: 1rem;
+  color: var(--text-2);
+  max-width: 520px;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+/* ── Tab switcher ── */
+.services__tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 5px;
+  width: fit-content;
+}
+
+.services__tab {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-3);
+  padding: 9px 20px;
+  border-radius: 99px;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  letter-spacing: -0.01em;
+}
+
+.services__tab:hover {
+  color: var(--text-2);
+}
+
+.services__tab.active {
+  background: #fff;
+  color: var(--text);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* ── Bento grid ── */
+.services__bento {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  gap: 16px;
+}
+
+/* ── Cards ── */
+.svc__card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  cursor: default;
+  transition: border-color 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Large card spans 2 columns */
+.svc__card--large {
+  grid-column: span 2;
+}
+
+/* Accent top line */
+.svc__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.svc__card--blue::before {
+  background: linear-gradient(90deg, var(--accent), var(--purple));
+}
+.svc__card--teal::before {
+  background: linear-gradient(90deg, var(--teal), var(--accent));
+}
+.svc__card--purple::before {
+  background: linear-gradient(90deg, var(--purple), #ec4899);
+}
+
+.svc__card:hover {
+  border-color: var(--border-hover);
+}
+.svc__card:hover::before {
+  opacity: 1;
+}
+
+/* Card top row */
+.svc__card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+/* Icon box */
+.svc__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.svc__icon--blue { background: #eff6ff; }
+.svc__icon--teal { background: #f0fdfa; }
+.svc__icon--purple { background: #f5f3ff; }
+
+/* Number badge */
+.svc__num {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-3);
+  letter-spacing: 0.04em;
+}
+
+/* Title */
+.svc__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.03em;
+}
+
+/* Description */
+.svc__desc {
+  font-size: 0.875rem;
+  color: var(--text-2);
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+  flex: 1;
+}
+
+/* Highlights list */
+.svc__list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.svc__list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8125rem;
+  color: var(--text-2);
+  letter-spacing: -0.01em;
+}
+
+.svc__check {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  .services__bento {
+    grid-template-columns: 1fr 1fr;
+  }
+  .svc__card--large {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .services__bento {
+    grid-template-columns: 1fr;
+  }
+  .svc__card--large {
+    grid-column: span 1;
+  }
+  .services__tabs {
+    width: 100%;
+    justify-content: center;
+  }
+}
