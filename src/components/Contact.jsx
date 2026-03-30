@@ -19,9 +19,18 @@ export default function Contact() {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = (e) => {
+  const SHEETS_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE'
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('Form submitted:', form)
+    try {
+      await fetch(SHEETS_URL, {
+        method: 'POST',
+        body: JSON.stringify(form),
+      })
+    } catch (_) {
+      // silently ignore CORS preflight — Apps Script still receives and saves the data
+    }
     setSent(true)
     setForm({ name: '', email: '', company: '', message: '' })
     setTimeout(() => setSent(false), 4000)
@@ -72,18 +81,11 @@ export default function Contact() {
               whileInView="show"
               viewport={{ once: true }}
             >
-              <a href="mailto:hello@growthforgex.com" className="contact__info-item">
+              <a href="mailto:growthfrogex@gmail.com" className="contact__info-item">
                 <span className="contact__info-icon">✉</span>
                 <div>
                   <p className="contact__info-label">Email Us</p>
-                  <p className="contact__info-value">hello@growthforgex.com</p>
-                </div>
-              </a>
-              <a href="tel:+11234567890" className="contact__info-item">
-                <span className="contact__info-icon">📞</span>
-                <div>
-                  <p className="contact__info-label">Call Us</p>
-                  <p className="contact__info-value">+1 (123) 456-7890</p>
+                  <p className="contact__info-value">growthfrogex@gmail.com</p>
                 </div>
               </a>
               <div className="contact__info-item">
