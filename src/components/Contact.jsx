@@ -26,7 +26,7 @@ export default function Contact() {
     try {
       await fetch(SHEETS_URL, {
         method: 'POST',
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, type: 'contact' }),
       })
     } catch (_) {
       // silently ignore CORS preflight — Apps Script still receives and saves the data
