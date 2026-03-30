@@ -19,7 +19,7 @@ export default function Contact() {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }))
   }
 
-  const SHEETS_URL = 'PASTE_YOUR_APPS_SCRIPT_URL_HERE'
+  const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwweJAE8p3ufcFZuAfH6VFwiUW6TGSbJ_QiNLU7v9b6XHUV1ZTTBk1MeagSnHXgy1BlBQ/exec'
 
   const handleSubmit = async (e) => {
     e.preventDefault()
